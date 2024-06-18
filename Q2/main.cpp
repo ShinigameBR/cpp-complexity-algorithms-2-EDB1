@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
 
-bool verificar_ordem_crescente(int a[], int n)
+bool verificar_ordem_crescente(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
     {
-        if (a[i] > a[i + 1])
+        if (arr[i] > arr[i + 1])
         {
             return false;
         }
@@ -15,19 +15,19 @@ bool verificar_ordem_crescente(int a[], int n)
 
 int main()
 {
-    cout << "Digite o tamanho do vetor:" << endl;
+    cout << "Digite o tamanho do array:" << endl;
     int n;
     cin >> n;
 
-    int a[n];
-    cout << "Digite os items do vetor:" << endl;
+    int arr[n];
+    cout << "Digite os items do array:" << endl;
     for (int i = 0; i < n; i++)
     {
         cout << "Item " << i << ": ";
-        cin >> a[i];
+        cin >> arr[i];
     }
 
-    cout << "Resultado: " << (verificar_ordem_crescente(a, n) ? "true" : "false") << endl;
+    cout << "Resultado: " << (verificar_ordem_crescente(arr, n) ? "true" : "false") << endl;
 
     return 0;
 }

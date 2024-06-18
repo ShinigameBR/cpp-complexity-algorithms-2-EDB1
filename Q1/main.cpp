@@ -1,16 +1,14 @@
-#include <ctime> // Para time()
+#include <ctime>
 #include <iostream>
-#include <stdlib.h> // Para rand() e srand()
+#include <stdlib.h>
 using namespace std;
 
 int *generateRandomArray(int N)
 {
-    // Usar o tempo atual como semente para o gerador
     srand(time(nullptr));
 
     int *randomArray = new int[N];
 
-    // Gerar valores aleatórios e adicionar ao array
     for (int i = 0; i < N; ++i)
     {
         randomArray[i] = rand() % (N + 1);
