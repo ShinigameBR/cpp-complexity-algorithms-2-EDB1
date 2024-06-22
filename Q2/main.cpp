@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-bool verificar_ordem_crescente(int arr[], int n)
+bool checkOrder(int arr[], int n)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         if (arr[i] > arr[i + 1])
         {
@@ -27,7 +27,7 @@ int main()
         cin >> arr[i];
     }
 
-    cout << "Resultado: " << (verificar_ordem_crescente(arr, n) ? "true" : "false") << endl;
+    cout << "Resultado: " << (checkOrder(arr, n) ? "true" : "false") << endl;
 
     return 0;
 }

@@ -1,6 +1,6 @@
-#include <ctime>
 #include <iostream>
 #include <stdlib.h>
+#include <ctime>
 using namespace std;
 
 int *generateRandomArray(int N)

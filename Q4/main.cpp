@@ -1,48 +1,61 @@
 #include <iostream>
 using namespace std;
 
-void merge(int arr[], int beginArray[], int beginSize, int endArray[], int endSize)
+void merge(int arr[], int left, int mid, int right)
 {
-    int i = 0, j = 0, k = 0;
-    while (i < beginSize && j < endSize)
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    int L[n1], R[n2];
+
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    int i = 0;
+    int j = 0;
+    int k = left;
+
+    while (i < n1 && j < n2)
     {
-        if (beginArray[i] <= endArray[j])
+        if (L[i] <= R[j])
         {
-            arr[k++] = beginArray[i++];
+            arr[k] = L[i];
+            i++;
         }
         else
         {
-            arr[k++] = endArray[j++];
+            arr[k] = R[j];
+            j++;
         }
+        k++;
     }
-    while (i < beginSize)
+
+    while (i < n1)
     {
-        arr[k++] = beginArray[i++];
+        arr[k] = L[i];
+        i++;
+        k++;
     }
-    while (j < endSize)
+
+    while (j < n2)
     {
-        arr[k++] = endArray[j++];
+        arr[k] = R[j];
+        j++;
+        k++;
     }
 }
 
-void mergeSort(int arr[], int const begin, int const end)
+void mergeSort(int arr[], int left, int right)
 {
-    if (begin >= end)
-        return;
+    if (left < right)
+    {
+        int mid = left + (right - left) / 2;
 
-    int mid = begin + (end - begin) / 2;
-    mergeSort(arr, begin, mid);
-    mergeSort(arr, mid + 1, end);
-    int beginArray[mid - begin + 1], endArray[end - mid];
-    for (int i = 0; i <= mid - begin; i++)
-    {
-        beginArray[i] = arr[begin + i];
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
     }
-    for (int i = 0; i < end - mid; i++)
-    {
-        endArray[i] = arr[mid + 1 + i];
-    }
-    merge(arr, beginArray, mid - begin + 1, endArray, end - mid);
 }
 
 int main()
